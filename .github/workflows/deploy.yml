@@ -15,6 +15,12 @@ jobs:
           fetch-depth: 0
           lfs: true
 
+      - name: Setup Git LFS
+        run: |
+          git lfs install
+          git lfs track "*.pkl"
+          git add .gitattributes
+
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
